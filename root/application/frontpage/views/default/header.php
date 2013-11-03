@@ -43,36 +43,44 @@
     // we end up waiting for the whole window to load in this example
     $(window).load(function () {
         $(document).ready(function(){
+            $winWidth = $(window).width();
+        	
+
+            	
             collage();
             $('.Collage').collageCaption();
-/*
-            $(".fancybox").fancybox({
-        		openEffect	: 'none',
-        		closeEffect	: 'none',
-        		closeBtn : false,
-        		arrows : true,
-        		helpers:{
-            		title:{type:'inside'},
-        			overlay: {
-        				css:{'background':'none'},
-            			css:{'background-color':'#f7f7f7'}
-            		},
-            		
-                    buttons	: {
-							position: 'bottom'
-                        }
-        		}
-        	});
-        	*/
+            if($winWidth < '1200'){
             $("[rel='gallery1']").fancybox({
+            	openEffect	: 'none',
+        		closeEffect	: 'none',
+            	closeBtn : false,
+            	theme     : 'default',
+            	padding: 0,
+            	margin:[10,10,10,10],
+            	arrows:false,
+            	caption:{type:'outside'},
 				helpers : {
-					thumbs : true,
-					overlay:{
-							css:{'background-color':'black'}
-						}
+					
+					thumbs : false,
 				}
 			});
-    
+            }else{
+            	 $("[rel='gallery1']").fancybox({
+                 	openEffect	: 'none',
+             		closeEffect	: 'none',
+                 	closeBtn : false,
+                 	theme     : 'default',
+                 	padding: 0,
+                 	margin:[10,10,10,10],
+                 	arrows:true,
+                 	caption:{type:'outside'},
+     				helpers : {
+     					
+     					thumbs : true,
+     				}
+     			});
+
+                }
             
         });
     });
