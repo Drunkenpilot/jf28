@@ -24,7 +24,7 @@
 
         var defaults = {
             // the ideal height you want your images to be
-            'targetHeight'          : 200,
+            'targetHeight'          : 400,
             // width of the area the collage will be in
             'albumWidth'            : this.width(),
             // padding between the images. Using padding left as we assume padding is even all the way round
@@ -117,8 +117,8 @@
                      * this is our ideal size, but later we'll resize to make it fit
                      *
                      */
-                    var nw = Math.ceil(w/h*settings.targetHeight*1.5),
-                        nh = Math.ceil(settings.targetHeight*1.5);
+                    var nw = Math.ceil(w/h*settings.targetHeight*1.2),
+                        nh = Math.ceil(settings.targetHeight*1.2);
 
                     /*
                      *

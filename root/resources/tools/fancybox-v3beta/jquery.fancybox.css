@@ -67,8 +67,8 @@ a.fancybox-nav span,
 }
 
 .fancybox-skin {
-    border-style: solid;
-    border-color: #fff;
+   /* border-style: solid;
+    border-color: #fff;*/
     background: #fff;
     color: #444;
 }
@@ -225,7 +225,7 @@ a.fancybox-expand {
 }
 
 .fancybox-title {
-    font: normal 14px "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:12px;
     line-height: 1.5;
     position: relative;
     text-shadow: none;
@@ -257,8 +257,8 @@ a.fancybox-expand {
 .fancybox-title-outside-wrap {
     position: relative;
     margin-top: 10px;
-    color: #fff;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.5);
+    color: black;
+   /* text-shadow: 0 1px rgba(0, 0, 0, 0.5);*/
 }
 
 .fancybox-title-inside-wrap {
@@ -297,7 +297,7 @@ a.fancybox-expand {
 }
 
 .fancybox-default-skin-open {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .fancybox-default-overlay {
