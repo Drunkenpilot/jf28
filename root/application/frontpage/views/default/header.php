@@ -18,24 +18,24 @@
     <![endif]-->
 
 
-	<link rel="stylesheet" media="all" href="<?=base_url('resources/css/stylesheet.css')?>" type="text/css">
-    <link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/tools/collageplus/support/examples.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/tools/collageplus/css/transitions.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/tools/collageplus/css/transitions.css" media="all" />
-<!--<link rel="stylesheet" type="text/css" href="<? //base_url()?>resources/tools/fancybox/jquery.fancybox.css" media="all" />
-	<link rel="stylesheet" type="text/css" href="<? //base_url()?>resources/tools/fancybox/helpers/jquery.fancybox-thumbs.css" media="all" />
-	<link rel="stylesheet" type="text/css" href="<? //base_url()?>resources/tools/fancybox/helpers/jquery.fancybox-buttons.css" media="all" /> -->	
-	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/tools/fancybox-v3beta/jquery.fancybox.css" media="all" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/tools/fancybox-v3beta/jquery.fancybox-thumbs.css" media="all" />
+	<link rel="stylesheet" media="all" href="<?=base_url('resources/frontpage/css/stylesheet.css')?>" type="text/css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/frontpage/tools/collageplus/support/examples.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/frontpage/tools/collageplus/css/transitions.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/frontpage/tools/collageplus/css/transitions.css" media="all" />
+<!--<link rel="stylesheet" type="text/css" href="<? //base_url()?>resources/frontpage/tools/fancybox/jquery.fancybox.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="<? //base_url()?>resources/frontpage/tools/fancybox/helpers/jquery.fancybox-thumbs.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="<? //base_url()?>resources/frontpage/tools/fancybox/helpers/jquery.fancybox-buttons.css" media="all" /> -->	
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/frontpage/tools/fancybox-v3beta/jquery.fancybox.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>resources/frontpage/tools/fancybox-v3beta/jquery.fancybox-thumbs.css" media="all" />
 	
-	<script src="<?=base_url()?>resources/tools/fancybox-v3beta/jquery.fancybox.js"></script>
-	<script src="<? //base_url()?>resources/tools/fancybox-v3beta/jquery.fancybox-thumbs.js"></script>
-<!--<script src="<? //base_url()?>resources/tools/fancybox/jquery.fancybox.js"></script>
-	<script src="<? //base_url()?>resources/tools/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
-	<script src="<? //base_url()?>resources/tools/fancybox/helpers/jquery.fancybox-buttons.js"></script> -->
-    <script src="<?=base_url()?>resources/tools/collageplus/jquery.collagePlus.js"></script>
-    <script src="<?=base_url()?>resources/tools/collageplus/extras/jquery.removeWhitespace.js"></script>
-    <script src="<?=base_url()?>resources/tools/collageplus/extras/jquery.collageCaption.js"></script>
+	<script src="<?=base_url()?>resources/frontpage/tools/fancybox-v3beta/jquery.fancybox.js"></script>
+	<script src="<? //base_url()?>resources/frontpage/tools/fancybox-v3beta/jquery.fancybox-thumbs.js"></script>
+<!--<script src="<? //base_url()?>resources/frontpage/tools/fancybox/jquery.fancybox.js"></script>
+	<script src="<? //base_url()?>resources/frontpage/tools/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
+	<script src="<? //base_url()?>resources/frontpage/tools/fancybox/helpers/jquery.fancybox-buttons.js"></script> -->
+    <script src="<?=base_url()?>resources/frontpage/tools/collageplus/jquery.collagePlus.js"></script>
+    <script src="<?=base_url()?>resources/frontpage/tools/collageplus/extras/jquery.removeWhitespace.js"></script>
+    <script src="<?=base_url()?>resources/frontpage/tools/collageplus/extras/jquery.collageCaption.js"></script>
   
    <script type="text/javascript">
 
@@ -44,8 +44,6 @@
     $(window).load(function () {
         $(document).ready(function(){
             $winWidth = $(window).width();
-        	
-
             	
             collage();
             $('.Collage').collageCaption();
