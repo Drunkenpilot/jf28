@@ -17,7 +17,7 @@ $(function(){
 		} 
 		
 		$('input, textarea').placeholder();
-		$('.date').datepicker();
+	
 		
 		
 })
