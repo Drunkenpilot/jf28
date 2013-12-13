@@ -11,12 +11,9 @@
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="<?=base_url()?>../resources/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?=base_url()?>../resources/bootstrap/js/jquery.placeholder.js"></script>
-<script src="<?=base_url()?>../resources/datepicker/js/bootstrap-datepicker.js"></script>
 <script src="<?=base_url()?>../resources/admin/js/tools.js"></script>
 <link href="<?=base_url()?>../resources/bootstrap/css/bootstrap.css" rel="stylesheet" >
 <link href="<?=base_url()?>../resources/bootstrap/css/sticky-footer.css" rel="stylesheet">
-<link href="<?=base_url()?>../resources/datepicker/css/datepicker.css" rel="stylesheet" >
-<link href="<?=base_url()?>../resources/frontpage/css/glyphicons.css" rel="stylesheet" >
 <link href="<?=base_url()?>../resources/admin/css/reset.css" rel="stylesheet" >
 
 
