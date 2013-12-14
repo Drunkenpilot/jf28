@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////
-/* Utilitaire for Beta Resto of betalife        */
+/* Utilitaire for Beta-Gallery of betalife        */
 /* Authority: Hao Zhenyu | Beta Life @ Brussels */
 /* Year 2013                                    */
 //////////////////////////////////////////////////
@@ -32,13 +32,23 @@ function position_down(id){
 }
 
 
-function print() {
 
-	
-	if (confirm('vous voulez imprimer ce ticket ?')) {
-		
-		$('form[name=printTicket]').trigger('submit');
-		
-	}
-}	
 
+function deleteItem(id,thumb)
+{
+	$('#deleteItem .modal-body').html(
+			'<p><img src="../uploads/thumbs/'+thumb+'"></p>'
+			+'<p>Would you like to delete this photo ?<br><b><small>'+thumb+'</small></b></p>'
+	);
+	$('#deleteItem').modal({})
+}
+
+function doDelete($id)
+{
+	$.post("/gallery/deleteItem",
+			   { id: $id  },
+			   function(data){
+			     alert("Data Loaded: " +  data);
+			   }
+			 );
+}
