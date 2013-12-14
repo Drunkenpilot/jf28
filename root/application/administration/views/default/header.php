@@ -11,9 +11,11 @@
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="<?=base_url()?>../resources/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?=base_url()?>../resources/bootstrap/js/jquery.placeholder.js"></script>
+<script src="<?=base_url()?>../resources/upload/js/jquery.blueimp-gallery.min.js"></script>
 <script src="<?=base_url()?>../resources/admin/js/tools.js"></script>
 <link href="<?=base_url()?>../resources/bootstrap/css/bootstrap.css" rel="stylesheet" >
 <link href="<?=base_url()?>../resources/bootstrap/css/sticky-footer.css" rel="stylesheet">
+<link rel="stylesheet" href="<?=base_url(); ?>../resources/upload/css/blueimp-gallery.css">
 <link href="<?=base_url()?>../resources/admin/css/reset.css" rel="stylesheet" >
 
 
@@ -31,7 +33,7 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="<?=site_url()?>">Jean-François DE WITTE | Admin</a>
+					<a class="navbar-brand" href="<?=site_url()?>">Jean-François DE WITTE</a>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
@@ -39,11 +41,10 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-list"></i> Catalog  <span
 								class="caret"></span></a>
 							<ul	class="dropdown-menu">
-								<li <?php if($this->uri->segment(2)=='products'){ echo 'class="active"';}?>><a href="<?=site_url('catalog/products')?>">Products</a></li>
 								<li <?php if($this->uri->segment(2)=='categories'){ echo 'class="active"';}?>><a href="<?=site_url('catalog/categories')?>">Categories</a></li>
 							</ul>
 						</li>
-					
+						<li <?php if($this->uri->segment(1)=='gallery'){ echo 'class="active"';}?>><a href="<?=site_url()?>gallery"><i class="glyphicon glyphicon-picture"></i> Gallery  </a></li>
 						<li class="dropdown <?php if($this->uri->segment(1)=='preference'){ echo 'active';}?>">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
 								class="glyphicon glyphicon-wrench"></i> Preference <span

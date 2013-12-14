@@ -60,6 +60,7 @@ $route['apps/city/(:num)'] = "apps/city/index";
 $route['customers/customers/(:num)'] = "customers/customers/index";
 $route['catalog/products/(:num)'] = "catalog/products/index";
 
+$route['gallery'] = "gallery/gallery";
 $route['gallery/upload'] = "gallery/upload";
 
 /* End of file routes.php */
