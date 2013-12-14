@@ -13,27 +13,26 @@ class Upload extends MY_Controller {
     public function index() {
     	$data['title'] = $this->title('upload');
     	 $this->load->view($this->theme->admin_theme.'/header',$data);
-        $this->load->view($this->theme->admin_theme.'/upload/upload');
+        $this->load->view($this->theme->admin_theme.'/gallery/upload',array('error' => ''));
          $this->load->view($this->theme->admin_theme.'/footer');
     }
 
     public function do_upload() {
-    	
+    	$md5Date = Date("Y_m_d_H_i_s");
         $upload_path_url = base_url() . '../uploads/';
-
-        $config['upload_path'] = FCPATH . '../uploads/';
+		$config['file_name'] = 'photo_'.$md5Date;
+        $config['upload_path'] = FCPATH . '../uploads/large';
        
         $config['allowed_types'] = 'jpg|jpeg|png|gif';
-        $config['max_size'] = '30000';
+        $config['max_size'] = '5000000';
 
         $this->load->library('upload', $config);
      if (!$this->upload->do_upload()) {
-           // $error = array('error' => $this->upload->display_errors());
-            //$this->load->view($this->theme->admin_theme.'/upload/error', $error);
+            $error = array('error' => $this->upload->display_errors());
+            $this->load->view($this->theme->admin_theme.'/gallery/error', $error);
 
             //Load the list of existing files in the upload directory
             $existingFiles = get_dir_file_info($config['upload_path']);
-          //  var_dump($existingFiles);
             $foundFiles = array();
             $f=0;
             foreach ($existingFiles as $fileName => $info) {
@@ -41,9 +40,9 @@ class Upload extends MY_Controller {
                 //set the data for the json array   
                 $foundFiles[$f]['name'] = $fileName;
                 $foundFiles[$f]['size'] = $info['size'];
-                $foundFiles[$f]['url'] = $upload_path_url . $fileName;
+                $foundFiles[$f]['url'] = $upload_path_url.'large/' . $fileName;
                 $foundFiles[$f]['thumbnailUrl'] = $upload_path_url . 'thumbs/' . $fileName;
-                $foundFiles[$f]['deleteUrl'] = base_url() . '../uploads/deleteImage/' . $fileName;
+                $foundFiles[$f]['deleteUrl'] = base_url() . 'gallery/upload/deleteImage/' . $fileName;
                 $foundFiles[$f]['deleteType'] = 'DELETE';
                 $foundFiles[$f]['error'] = null;
                 
@@ -73,32 +72,58 @@ class Upload extends MY_Controller {
               )
              */
             // to re-size for thumbnail images un-comment and set path here and in json array
-            $config = array();
-            $config['image_library'] = 'gd2';
-            $config['source_image'] = $data['full_path'];
-            $config['create_thumb'] = TRUE;
-            $config['new_image'] = $data['file_path'] . 'thumbs/';
-            $config['maintain_ratio'] = TRUE;
-            $config['thumb_marker'] = '';
-            $config['width'] = 75;
-            $config['height'] = 50;
-            $this->load->library('image_lib', $config);
+            $this->load->library('image_lib');
+            $large_name = $data['file_name'];
+   			$medium_name = 'm_'.$data['raw_name'].$data['file_ext'];
+   			$thumb_name = 'thumb_'.$data['raw_name'].$data['file_ext'];
+            $config_s = array();
+            $config_s['image_library'] = 'gd2';
+            $config_s['source_image'] = $data['full_path'];
+            $config_s['create_thumb'] = TRUE;
+            $config_s['new_image'] = $data['file_path'] . '../thumbs/'.$thumb_name;
+            $config_s['maintain_ratio'] = TRUE;
+            $config_s['thumb_marker'] = '';
+            $config_s['width'] = 250*$data['image_width']/$data['image_height'];
+            $config_s['height'] = 250;
+			$config_m = array();
+            $config_m['image_library'] = 'gd2';
+            $config_m['source_image'] = $data['full_path'];
+            $config_m['create_thumb'] = TRUE;
+            $config_m['new_image'] = $data['file_path'] . '../medium/'.$medium_name;
+            $config_m['maintain_ratio'] = TRUE;
+            $config_m['thumb_marker'] = '';
+            if($data['image_height']<760){
+            $config_m['width'] = $data['image_width'];
+            $config_m['height'] = $data['image_height'];
+            }else{
+            $config_m['width'] = 760*$data['image_width']/$data['image_height'];
+            $config_m['height'] = 760;
+            }
+            
+            $this->image_lib->initialize($config_s);
             $this->image_lib->resize();
-
-           $info = new stdClass();
+			$this->image_lib->initialize($config_m);
+			$this->image_lib->resize();
+          
             //set the data for the json array	
+            $info = new stdClass();
             $info->name = $data['file_name'];
             $info->size = $data['file_size'];
             $info->type = $data['file_type'];
-            $info->url = $upload_path_url . $data['file_name'];
+            $info->url = $upload_path_url.'large/' . $data['file_name'];
             // I set this to original file since I did not create thumbs.  change to thumbnail directory if you do = $upload_path_url .'/thumbs' .$data['file_name']
-            $info->thumbnailUrl = $upload_path_url . 'thumbs/' . $data['file_name'];
-            $info->deleteUrl = base_url() . '../uploads/' . $data['file_name'];
+            $info->thumbnailUrl = $upload_path_url . 'thumbs/' . $thumb_name;
+            $info->deleteUrl = base_url() . 'gallery/upload/deleteImage/' . $data['file_name'];
             $info->deleteType = 'DELETE';
             $info->error = null;
 			
             $files[] = $info;
-          
+            
+            $num = photo::count();
+            $position = $num+1;
+            $newPhotoData = array('id'=>'','filename_l'=>$large_name,'filename_m'=>$medium_name,'filename_s'=>$thumb_name,'position'=>$position,'active'=>1);
+            $newPhoto = photo::create($newPhotoData);
+            
             //this is why we put this in the constants to pass only json data
             if (IS_AJAX) {
                 echo json_encode(array("files" => $files));
@@ -110,7 +135,7 @@ class Upload extends MY_Controller {
                 $file_data['upload_data'] = $this->upload->data();
                 $data['title'] = $this->title('success');
                 $this->load->view($this->theme->admin_theme.'/header',$data);
-                $this->load->view($this->theme->admin_theme.'/upload/upload_success', $file_data);
+                $this->load->view($this->theme->admin_theme.'/gallery/upload_success', $file_data);
                 $this->load->view($this->theme->admin_theme.'/footer');
             }
         }
@@ -119,13 +144,24 @@ class Upload extends MY_Controller {
 
 
     public function deleteImage($file) {//gets the job done but you might want to add error checking and security
-    	var_dump($file);
-      /*  $success = unlink(FCPATH . '../uploads/' . $file);
-        $success = unlink(FCPATH . '../uploads/thumbs/' . $file);
+    	 $deleteItem = photo::find_by_filename_l($file);
+    	 $deleteItem->delete();
+   		 $reposition = photo::find('all',array('conditions'=>array('position >'.$deleteItem->position)));
+		 if($reposition):
+   		 foreach ($reposition as $res){
+			$res->position = $res->position-1;
+			$res->save();
+		 }
+		 endif;
+     	 $success = unlink(FCPATH . '../uploads/large/' . $file);
+     	 $success = unlink(FCPATH . '../uploads/medium/' . 'm_'.$file);
+         $success = unlink(FCPATH . '../uploads/thumbs/' . 'thumb_'.$file);
+         
         //info to see if it is doing what it is supposed to	
+        $info = new stdClass();
         $info->sucess = $success;
-        $info->path = base_url() . '../uploads/' . $file;
-        $info->file = is_file(FCPATH . '../uploads/' . $file);
+        $info->path = base_url() . '../uploads/large/' . $file;
+        $info->file = is_file(FCPATH . '../uploads/large/' . $file);
 
         if (IS_AJAX) {
             //I don't think it matters if this is set but good for error checking in the console/firebug
@@ -134,9 +170,9 @@ class Upload extends MY_Controller {
             //here you will need to decide what you want to show for a successful delete		
              $file_data['delete_data'] = $file;
              $this->load->view($this->theme->admin_theme.'/header',$data);
-             $this->load->view($this->theme->admin_theme.'/upload/delete_success', $file_data);
+             $this->load->view($this->theme->admin_theme.'/gallery/delete_success', $file_data);
              $this->load->view($this->theme->admin_theme.'/footer');
-        }*/
+        }
     }
 
 }

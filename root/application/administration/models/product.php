@@ -1,6 +1,6 @@
 <?php
 class Product extends ActiveRecord\Model{
-	
+	/*
 	static $has_many = array(
      array('attributegroup','class_name'=>'attributegroup')
      
@@ -9,4 +9,5 @@ class Product extends ActiveRecord\Model{
    array('category', 'class_name'=>'category'),array('taxgroup','class_name'=>'taxgroup')
    
    );
+   */
 }

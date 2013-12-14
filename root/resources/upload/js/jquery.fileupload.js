@@ -62,6 +62,7 @@
     $.widget('blueimp.fileupload', {
 
         options: {
+        	
             // The drop target element(s), by the default the complete document.
             // Set to null to disable drag & drop support:
             dropZone: $(document),
@@ -252,8 +253,10 @@
             // The following are jQuery ajax settings required for the file uploads:
             processData: false,
             contentType: false,
-            cache: false
+            cache: false,
+            
         },
+        
 
         // A list of options that require reinitializing event listeners and/or
         // special initialization code:
