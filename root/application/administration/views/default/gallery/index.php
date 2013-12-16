@@ -1,3 +1,4 @@
+
 <div class="panel panel-default">
 
 <div class=" panel-heading">Gallery</div>
@@ -13,16 +14,17 @@
 	</div>
 	<?php }else{?>
 	<?php foreach ($photos as $p):?>
- <div class="col-sm-3 col-md-2">
+ <div class="post-box col-xs-12 col-sm-6 col-md-2 item_<?=$p->id?>">
     <div class="thumbnail">
      
       <a class="thumbnail" href="<?=base_url()?>../uploads/large/<?=$p->filename_l?>" title="<?=$p->filename_l?>"  data-gallery="" >
        <img src="<?=base_url()?>../uploads/thumbs/<?=$p->filename_s?>" alt="..." >
 		</a>
       <div class="caption">
+      <p><?php if($p->active==1){?><span class="label label-success">active</span><?php }else{?><span class="label label-danger">disabled</span><?php }?></p>
         <p>
-        <a href="#" class="btn btn-primary btn-xs" role="button"><i class="glyphicon glyphicon-pencil"></i></a> 
-        <a href="#" class="btn btn-danger btn-xs" role="button" onclick="deleteItem(<?=$p->id?>,'<?=$p->filename_s?>')"><i class="glyphicon glyphicon-trash"></i></a>
+        <a href="<?=site_url()?>gallery/gallery/edit/<?=$p->id?>" class="btn btn-primary btn-xs" role="button"><i class="glyphicon glyphicon-pencil"></i></a> 
+        <button type="button" class="btn btn-danger btn-xs" role="button" onclick="deleteItem(<?=$p->id?>,'<?=$p->filename_s?>')"><i class="glyphicon glyphicon-trash"></i></button>
          |
          <button type="button" class="btn btn-primary btn-xs" onclick="position_up(<?=$p->id?>);" <?php if($p->position==1){?>disabled<?php }?>><i class="glyphicon glyphicon-circle-arrow-up"></i></button> 
 				<?=$p->position?> 
@@ -43,7 +45,7 @@
   </div>
 	<?php endforeach;?>
 	<?php }?>
-
+	<div class="clearfix"></div>
 </div>	
 
  <!-- The blueimp Gallery widget -->
@@ -67,9 +69,10 @@
 				</div>
 				<div class="modal-body">Would you like to delete this photo ?</div>
 				<div class="modal-footer">
-					<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-					<button class="btn btn-primary" onclick=>Yes</button>
+					
+					
 				</div>
 			</div>
 		</div>
 	</div>
+	

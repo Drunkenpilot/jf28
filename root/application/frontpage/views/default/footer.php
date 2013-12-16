@@ -1,12 +1,15 @@
+</div>
+<!-- end of wrap -->
 <!-- .footer -->
-<div class="footer">
-<span>&copy; 2013 - JF28 all rights reserved</span>
+<div id="footer" class="footer">
+	<div class="container">
+	<p class="text-muted credit">
+	&copy; 2013 - JF28 all rights reserved | <a href="http://www.betalife.be" target="_blank">Beta Life</a>
+	</p>
+	
+	</div>
 </div>
 <!-- /.footer -->
-
-
-</div>
-<!-- /.page -->
-
-</body>
+</body
 </html>
+

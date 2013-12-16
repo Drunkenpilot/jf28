@@ -26,7 +26,7 @@
       <td><?=$a->lastname?></td>
       <td><?=$a->email?></td>
       <td><?=$a->role?></td>
-      <td><?php if($a->status == 1 ){?><span class="label label-success">Active</span><?php }else{?><span class="label label-important">Blocked</span><?php }?></td>
+      <td><?php if($a->status == 1 ){?><span class="label label-success">Active</span><?php }else{?><span class="label label-danger">Blocked</span><?php }?></td>
       <td><div class="btn-group">
   	<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
   	Actions 

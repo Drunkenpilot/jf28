@@ -121,7 +121,7 @@ class Upload extends MY_Controller {
             
             $num = photo::count();
             $position = $num+1;
-            $newPhotoData = array('id'=>'','filename_l'=>$large_name,'filename_m'=>$medium_name,'filename_s'=>$thumb_name,'position'=>$position,'active'=>1);
+            $newPhotoData = array('id'=>'','filename_l'=>$large_name,'filename_m'=>$medium_name,'filename_s'=>$thumb_name,'thumb_width'=>$config_s['width'],'thumb_height'=>$config_s['height'],'position'=>$position,'active'=>1);
             $newPhoto = photo::create($newPhotoData);
             
             //this is why we put this in the constants to pass only json data
