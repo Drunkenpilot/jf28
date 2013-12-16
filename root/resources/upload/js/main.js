@@ -52,7 +52,8 @@ $(function () {
             .test(window.navigator.userAgent),
         previewMaxWidth: 100,
         previewMaxHeight: 100,
-        previewCrop: true
+        previewCrop: true,
+        limitConcurrentUploads:1
     }).on('fileuploadadd', function (e, data) {
         data.context = $('<div/>').appendTo('#files');
         $.each(data.files, function (index, file) {

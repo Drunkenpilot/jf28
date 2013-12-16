@@ -20,6 +20,7 @@ class Welcome extends MY_Controller {
 	public function index()
 	{
 		$data['title'] = $this->title('home');
+		$data['photo'] = photo::find('all');
 		$this->load->view('default/header',$data);
 		$this->load->view('default/welcome_message');
 		$this->load->view('default/footer');

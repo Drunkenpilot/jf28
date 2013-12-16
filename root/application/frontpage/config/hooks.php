@@ -9,7 +9,12 @@
 |	http://codeigniter.com/user_guide/general/hooks.html
 |
 */
-
+$hook['pre_controller'][] = array(
+    'class'    => '',
+    'function' => 'initialize_php_activerecord',
+    'filename' => 'ActiveRecord.php',
+    'filepath' => 'third_party/php-activerecord'                                
+);
 
 
 /* End of file hooks.php */

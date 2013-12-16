@@ -11,10 +11,14 @@
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="<?=base_url()?>../resources/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?=base_url()?>../resources/bootstrap/js/jquery.placeholder.js"></script>
+<script src="<?=base_url()?>../resources/bootstrap/js/masonry.pkgd.min.js"></script>
+<script src="<?=base_url()?>../resources/bootstrap/js/imagesloaded.pkgd.min.js"></script>
 <script src="<?=base_url()?>../resources/upload/js/jquery.blueimp-gallery.min.js"></script>
+<script src="<?=base_url()?>../resources/datepicker/js/bootstrap-datepicker.js"></script>
 <script src="<?=base_url()?>../resources/admin/js/tools.js"></script>
 <link href="<?=base_url()?>../resources/bootstrap/css/bootstrap.css" rel="stylesheet" >
 <link href="<?=base_url()?>../resources/bootstrap/css/sticky-footer.css" rel="stylesheet">
+<link href="<?=base_url()?>../resources/datepicker/css/datepicker.css" rel="stylesheet">
 <link rel="stylesheet" href="<?=base_url(); ?>../resources/upload/css/blueimp-gallery.css">
 <link href="<?=base_url()?>../resources/admin/css/reset.css" rel="stylesheet" >
 
