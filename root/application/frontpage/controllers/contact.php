@@ -23,7 +23,7 @@ class Contact extends MY_Controller{
 			$this->email->initialize($config);
 			$this->email->from($_POST['email'], $_POST['email']);
 			$this->email->to('jf28@jf28.com');
-			$this->email->subject('request information | jf28.com');
+			$this->email->subject('Request Informations | JF28.COM');
 
 			$email = $this->load->view('default/email/email',$_POST,TRUE);
 			$this->email->message($email);
