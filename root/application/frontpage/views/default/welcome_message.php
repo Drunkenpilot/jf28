@@ -1,5 +1,5 @@
 <!-- .main -->
-<div class="main">
+<div class="main" >
 <?php if($photo):?>
 	<div class="Collage effect-parent hidden-xs">	
 		<?php foreach ($photo as $p):?>
